@@ -25,11 +25,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Repository", "Infrastructure.Repository\Infrastructure.Repository.csproj", "{781F42F4-893F-40E9-9D39-508C428E74F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.CrossCutting.Adapter", "Infrastructure.CrossCutting.Adapter\Infrastructure.CrossCutting.Adapter.csproj", "{503D6F9B-2C88-4C72-943D-CA6B4B08080E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting.Adapter", "Infrastructure.CrossCutting.Adapter\Infrastructure.CrossCutting.Adapter.csproj", "{503D6F9B-2C88-4C72-943D-CA6B4B08080E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.CrossCutting.IOC", "Infrastructure.CrossCutting.IOC\Infrastructure.CrossCutting.IOC.csproj", "{E9C9CBDF-8EBE-4F08-8309-411CDE9F5914}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.CrossCutting.IOC", "Infrastructure.CrossCutting.IOC\Infrastructure.CrossCutting.IOC.csproj", "{E9C9CBDF-8EBE-4F08-8309-411CDE9F5914}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{5D33B88E-FF07-4C3E-8B3A-548C91640E57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{2D305CEE-85CF-4599-B0C5-2D4D89EF17CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{E9C9CBDF-8EBE-4F08-8309-411CDE9F5914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9C9CBDF-8EBE-4F08-8309-411CDE9F5914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9C9CBDF-8EBE-4F08-8309-411CDE9F5914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D305CEE-85CF-4599-B0C5-2D4D89EF17CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D305CEE-85CF-4599-B0C5-2D4D89EF17CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D305CEE-85CF-4599-B0C5-2D4D89EF17CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D305CEE-85CF-4599-B0C5-2D4D89EF17CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
