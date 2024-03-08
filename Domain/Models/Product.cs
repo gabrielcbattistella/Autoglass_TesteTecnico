@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
     public class Product
     {
+        [Key]
         public int CodigoProduto { get; set; }
         public string Descricao { get; set; }
         public bool Ativo { get; set; }

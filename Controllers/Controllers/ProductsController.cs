@@ -1,8 +1,10 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using Application.Validators;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Controllers.Controllers
 {
@@ -19,26 +21,42 @@ namespace Controllers.Controllers
             _applicationServiceProducts = ApplicationServiceProduct;
         }
 
-        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> GetAll()
         {
             return Ok(_applicationServiceProducts.GetAll());
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return Ok(_applicationServiceProducts.GetById(id));
+            try
+            {
+                return Ok(_applicationServiceProducts.GetById(id));
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+
         }
 
-        // POST api/values
         [HttpPost]
         public ActionResult Post([FromBody] ProductDTO productDTO)
         {
             try
             {
+                var validator = new CreateProductValidator();
+
+                var result = validator.Validate(productDTO);
+
+                var error = result.Errors.Select(e => e.ErrorMessage);
+
+                if (!result.IsValid)
+                {
+                    return BadRequest(error);
+                }
+
                 if (productDTO == null)
                     return NotFound();
 
@@ -54,12 +72,22 @@ namespace Controllers.Controllers
 
         }
 
-        // PUT api/values/5
         [HttpPut]
         public ActionResult Put([FromBody] ProductDTO productDTO)
         {
             try
             {
+                var validator = new CreateProductValidator();
+
+                var result = validator.Validate(productDTO);
+
+                var error = result.Errors.Select(e => e.ErrorMessage);
+
+                if (!result.IsValid)
+                {
+                    return BadRequest(error);
+                }
+
                 if (productDTO == null)
                     return NotFound();
 
@@ -73,7 +101,6 @@ namespace Controllers.Controllers
             }
         }
 
-        // DELETE api/values/5
         [HttpDelete()]
         public ActionResult Delete([FromBody] ProductDTO productDTO)
         {
