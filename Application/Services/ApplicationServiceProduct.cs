@@ -1,8 +1,10 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using Domain.BaseResponse;
 using Domain.Interfaces.Services;
 using Infrastructure.CrossCutting.Adapter.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Services
 {
@@ -45,6 +47,21 @@ namespace Application.Services
         {
             var objProduct = _mapper.MapperToEntity(obj);
             _service.Update(objProduct);
+        }
+
+        public PagedResult<ProductDTO> Filter(ProductDTO obj, int page, int pageSize)
+        {
+            var objProduct = _mapper.MapperToEntity(obj);
+            var pagedEntityResult = _service.Filter(objProduct, page, pageSize);
+
+            return new PagedResult<ProductDTO>()
+            {
+                CurrentPage = pagedEntityResult.CurrentPage,
+                PageCount = pagedEntityResult.PageCount,
+                PageSize = pagedEntityResult.PageSize,
+                RowCount = pagedEntityResult.RowCount,
+                Results = _mapper.MapperListProducts(pagedEntityResult.Results)
+            };
         }
     }
 }

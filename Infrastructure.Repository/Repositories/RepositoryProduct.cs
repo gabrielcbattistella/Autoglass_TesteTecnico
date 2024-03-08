@@ -1,7 +1,12 @@
-﻿using Domain.Entities;
+﻿using Domain.BaseResponse;
+using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Infrastructure.Data;
+using Infrastructure.Repository.Helpers;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Infrastructure.Repository.Repositories
 {
@@ -26,6 +31,17 @@ namespace Infrastructure.Repository.Repositories
             {
                 throw;
             }
+        }
+
+        public PagedResult<Product> FilterProducts(Product entity, int page, int pageSize = 5)
+        {
+            var result = _sqlContext.Set<Product>()
+                .Where(x => entity.CodigoProduto == default || x.CodigoProduto == entity.CodigoProduto)
+                .Where(x => x.Ativo == entity.Ativo)
+                .Where(x => entity.CodigoFornecedor == default || x.CodigoFornecedor == entity.CodigoFornecedor)
+                .GetPaged(page, pageSize);
+
+            return result;
         }
     }
 }

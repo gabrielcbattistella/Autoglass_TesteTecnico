@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Domain.BaseResponse;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.Interfaces.Repositories
 {

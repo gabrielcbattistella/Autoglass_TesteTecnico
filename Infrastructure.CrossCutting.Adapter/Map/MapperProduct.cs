@@ -55,7 +55,7 @@ namespace Infrastructure.CrossCutting.Adapter.Map
             {
                 CodigoProduto = productDTO.CodigoProduto,
                 Descricao = productDTO.Descricao,
-                Ativo = productDTO.Ativo,
+                Ativo = productDTO.Ativo.HasValue ? productDTO.Ativo.Value : true,
                 DataFabricacao = productDTO.DataFabricacao,
                 DataValidade = productDTO.DataValidade,
                 CodigoFornecedor = productDTO.CodigoFornecedor,

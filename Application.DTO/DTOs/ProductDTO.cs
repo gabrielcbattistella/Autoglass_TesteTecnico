@@ -6,7 +6,7 @@ namespace Application.DTOs
     {
         public int CodigoProduto { get; set; }
         public string Descricao { get; set; }
-        public bool Ativo { get; set; }
+        public bool? Ativo { get; set; }
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
         public int CodigoFornecedor { get; set; }

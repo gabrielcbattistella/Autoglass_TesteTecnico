@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Application.Validators;
+using Domain.BaseResponse;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,27 @@ namespace Controllers.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> GetAll()
         {
-            return Ok(_applicationServiceProducts.GetAll());
+            try
+            {
+                return Ok(_applicationServiceProducts.GetAll());
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost("Filter")]
+        public ActionResult<PagedResult<ProductDTO>> Filter([FromBody]ProductDTO obj, int page, int pageSize)
+        {
+            try
+            {
+                return Ok(_applicationServiceProducts.Filter(obj, page, pageSize));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet("{id}")]
@@ -65,11 +86,8 @@ namespace Controllers.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                return BadRequest();
             }
-
-
         }
 
         [HttpPut]
@@ -96,8 +114,7 @@ namespace Controllers.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                return BadRequest();
             }
         }
 
@@ -114,8 +131,7 @@ namespace Controllers.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                return BadRequest();
             }
         }
     }
